@@ -2,42 +2,35 @@ package Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class Employee {
-   private int id = 101;
-   private String name = "Guest";
-   private int salary = 10_000;
+public class EmployeeLazy {
+    private int id = 102;
+    private String name = "Guest";
+    private int salary = 10_000;
 
-   @Autowired
+    @Autowired
+    @Lazy
     private Address address;
-
-   @PostConstruct
+    public EmployeeLazy(){
+        System.out.println("EmployeeLazy.EmployeeLazy()");
+    }
     public void turnOn(){
-       System.out.println("Load Operating System Emp");
-   }
-
-   @PreDestroy
+        System.out.println("Load Operating System");
+    }
     public void turnOff(){
-       System.out.println("Close All Programs Emp");
-   }
+        System.out.println("Close All Programs");
+    }
 
-   public Employee(){
-       System.out.println("Employee.Employee()");
-   }
-
-   public Employee(Address address){
-       this.address = address;
-   }
-   public int getId(){
-       return id;
-   }
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
-        System.out.println("Id are .....");
         this.id = id;
     }
 
@@ -46,7 +39,6 @@ public class Employee {
     }
 
     public void setName(String name) {
-        System.out.println("Name is......");
         this.name = name;
     }
 
@@ -68,7 +60,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "EmployeeLazy{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", salary=" + salary +

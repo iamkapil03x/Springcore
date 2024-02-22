@@ -1,24 +1,16 @@
 package Entity;
 
 public class Address {
-    private String street;
-    private String city;
-
-    public Address(String street, String city) {
-        this.street = street;
-        this.city = city;
+    private String city = "city";
+    private String state = "state";
+    public void turnOn(){
+        System.out.println("Load Operation system for address");
     }
-
+    public void turnOff(){
+        System.out.println("Close all programs for address");
+    }
     public Address(){
-        super();
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+        System.out.println("Address.Address()");
     }
 
     public String getCity() {
@@ -29,11 +21,19 @@ public class Address {
         this.city = city;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
-                "street='" + street + '\'' +
-                ", city='" + city + '\'' +
+                "city='" + city + '\'' +
+                ", state='" + state + '\'' +
                 '}';
     }
 }
